@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:vbox width="100%" height="100%" xmlns:ui="haxeui::ui">
+	<ui:code id="document-content" width="100%" height="100%" />
+</ui:vbox>

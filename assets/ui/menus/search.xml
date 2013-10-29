@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:menu xmlns:ui="haxeui::ui">
+	<ui:menuitem id="menu-search-find" text="Find..." />
+	<ui:menuitem id="menu-search-find-replace" text="Find & Replace..." />
+</ui:menu>

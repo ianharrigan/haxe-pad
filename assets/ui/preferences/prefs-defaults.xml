@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:grid columns="2" xmlns:ui="haxeui::ui" xmlns:selection="haxeui::selection" xmlns:data="haxeui::data" text="Defaults">
+	<ui:text text="Last Directory:" />
+	<ui:hbox width="100%" style="padding: 0">
+		<ui:textinput text="" width="100%" id="lastDir"/>
+		<ui:button text="Clear" />
+	</ui:hbox>
+	
+	<ui:text text="Theme:" />
+	<selection:list text="Theme" width="100%">
+		<data:array>Gradient</data:array>
+	</selection:list>
+</ui:grid>

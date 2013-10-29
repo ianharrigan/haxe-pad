@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:menu xmlns:ui="haxeui::ui">
+	<ui:menuitem id="menu-program-prefs" text="Settings..." />
+</ui:menu>

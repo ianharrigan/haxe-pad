@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:vbox width="100%" xmlns:ui="haxeui::ui" xmlns:sys="haxeui::sys">
+	<sys:import resource="ui/warnings/not-implemented.xml" />
+	
+	<ui:grid width="100%" columns="2" xmlns:ui="haxeui::ui">
+		<ui:text text="Find what:"/>
+		<ui:textinput text="" width="100%" />
+
+		<ui:text text="Replace with:"/>
+		<ui:textinput text="" width="100%" />
+		
+		<ui:spacer />
+		<ui:checkbox text="Match case" />
+	</ui:grid>
+</ui:vbox>

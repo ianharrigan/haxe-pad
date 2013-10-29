@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin>
+	<id>document-switcher</id>
+	<type>keyboard</type>
+	<activation>
+		<keyCombination>CTRL+TAB</keyCombination>
+		<script>
+			var list = Cache.getValue("list");
+			if (list == null) {
+				var documentList = Documents.listDocuments();
+				var activeIndex = Documents.getActiveIndex() + 1;
+				if (activeIndex > Documents.getDocumentCount() - 1) {
+					activeIndex = 0;
+				}
+				
+				var list = Popups.showList(documentList, "Switch Document", activeIndex, false);
+				Cache.setValue("list", list);
+			} else {
+				var newIndex = list.getSelectedIndex() + 1;
+				if (newIndex > list.getListSize() - 1) {
+					newIndex = 0;
+				}
+				list.setSelectedIndex(newIndex, false);
+			}
+		</script>
+	</activation>
+	<deactivation>
+		<keyCombination>CTRL</keyCombination>
+		<script>
+			var list = Cache.getValue("list");
+			if (list != null) {
+				Documents.setActiveIndex(list.getSelectedIndex());
+				list.close();
+				Cache.clearValue("list");
+			}
+		</script>
+	</deactivation>
+</plugin>
