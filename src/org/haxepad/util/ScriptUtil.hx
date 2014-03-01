@@ -1,6 +1,7 @@
 package org.haxepad.util;
 import org.haxepad.script.Popups;
 import org.haxepad.script.ObjectCache;
+import org.haxepad.script.wrappers.ComponentsWrapper;
 import org.haxepad.script.wrappers.DocumentManagerWrapper;
 
 class ScriptUtil {
@@ -21,6 +22,9 @@ class ScriptUtil {
 		
 		var popupsWrapper:Popups = new Popups();
 		interp.variables.set("Popups", popupsWrapper);
+
+		var componentsWrapper:ComponentsWrapper = new ComponentsWrapper();
+		interp.variables.set("Components", componentsWrapper);
 		
 		return interp.execute(program);
 	}

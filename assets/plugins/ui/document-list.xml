@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin>
+	<id>document-list</id>
+	<name>Document List</name>
+	<type>ui</type>
+	<events>
+		<event>document.open</event>
+		<event>document.close</event>
+	</events>
+	<ui>
+		<button text="bob" />
+	</ui>
+</plugin>

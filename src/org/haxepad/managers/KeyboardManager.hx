@@ -28,7 +28,7 @@ class KeyboardManager {
 	
 	// TODO: method needs to be cleared, not correct way to go about things
 	private static function onKeyDown(event:KeyboardEvent):Void {
-		var plugins:Array<IPlugin> = PluginManager.getPlugins(IKeyboardPlugin);
+		var plugins:Array<IPlugin> = PluginManager.getUserPlugins(IKeyboardPlugin);
 		if (plugins != null && plugins.length > 0) {
 			for (p in plugins) {
 				var kp:IKeyboardPlugin = cast(p, IKeyboardPlugin);
@@ -61,7 +61,7 @@ class KeyboardManager {
 				_oldFocus = null;
 			}
 			
-			var plugins:Array<IPlugin> = PluginManager.getPlugins(IKeyboardPlugin);
+			var plugins:Array<IPlugin> = PluginManager.getUserPlugins(IKeyboardPlugin);
 			if (plugins != null && plugins.length > 0) {
 				for (p in plugins) {
 					var kp:IKeyboardPlugin = cast(p, IKeyboardPlugin);

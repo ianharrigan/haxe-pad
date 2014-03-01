@@ -3,7 +3,6 @@ import org.haxepad.managers.DocumentManager;
 
 class DocumentManagerWrapper {
 	public function new() {
-		
 	}
 	
 	public function listDocuments():Array<Dynamic> {

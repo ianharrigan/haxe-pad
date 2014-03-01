@@ -2,10 +2,12 @@ package org.haxepad.managers;
 
 import org.haxepad.plugins.IPlugin;
 import org.haxepad.plugins.KeyboardPlugin;
+import org.haxepad.plugins.UserInterfacePlugin;
 import org.haxepad.util.XPathUtil;
 
 class PluginManager {
 	private static var _plugins:Array<IPlugin> = new Array<IPlugin>();
+	private static var _userPlugins:Array<IPlugin> = new Array<IPlugin>();
 	
 	public static function loadPluginFromXML(xml:Xml):IPlugin {
 		var p:IPlugin = null;
@@ -14,6 +16,8 @@ class PluginManager {
 			switch (type) {
 				case "keyboard":
 					p = new KeyboardPlugin();
+				case "ui":
+					p = new UserInterfacePlugin();
 				default:
 			}
 		}
@@ -30,13 +34,40 @@ class PluginManager {
 		_plugins.push(plugin);
 	}
 	
-	public static function getPlugins(type:Dynamic):Array<IPlugin> { 
-		var array:Array<IPlugin> = new Array<IPlugin>();
+	public static function loadUserPlugins(xml:Xml):Void {
+		var plugins:Array<Xml> = XPathUtil.getXPathNodes(xml, "/plugins/plugin");
+		for (p in plugins) {
+			var id:String = XPathUtil.getXPathValue(p, "id/text()");
+			var config:Xml = XPathUtil.getXPathNode(p, "config");
+			addUserPlugin(id, config);
+		}
+	}
+	
+	public static function addUserPlugin(id:String, configXML:Xml = null):Void {
 		for (p in _plugins) {
+			if (p.id == id) {
+				var c:IPlugin = p.clone();
+				_userPlugins.push(c);
+			}
+		}
+	}
+	
+	public static function getUserPlugins(type:Dynamic):Array<IPlugin> { 
+		var array:Array<IPlugin> = new Array<IPlugin>();
+		for (p in _userPlugins) {
 			if (Std.is(p, type)) {
 				array.push(p);
 			}
 		}
 		return array;
+	}
+	
+	public static function findUserPlugin(id:String):IPlugin {
+		for (p in _userPlugins) {
+			if (p.id == id) {
+				return p;
+			}
+		}
+		return null;
 	}
 }

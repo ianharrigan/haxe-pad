@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugins>
+	<plugin>
+		<id>document-switcher</id>
+	</plugin>
+	<plugin>
+		<id>document-list</id>
+		<config>
+			
+		</config>
+	</plugin>
+</plugins>

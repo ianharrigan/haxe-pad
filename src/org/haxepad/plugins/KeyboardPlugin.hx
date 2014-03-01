@@ -56,4 +56,13 @@ class KeyboardPlugin extends Plugin implements IKeyboardPlugin {
 		}
 		return code;
 	}
+	
+	public override function clone():IPlugin {
+		var c:IKeyboardPlugin = cast(super.clone(), IKeyboardPlugin);
+		c.activationCtrlKey = this.activationCtrlKey;
+		c.activationKeyCode = this.activationKeyCode;
+		c.deactivationCtrlKey = this.deactivationCtrlKey;
+		c.deactivationKeyCode = this.deactivationKeyCode;
+		return c;
+	}
 }
