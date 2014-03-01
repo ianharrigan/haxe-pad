@@ -16,4 +16,7 @@
 	<event type="document.switch">
 		documentList.setSelection(Documents.getActiveIndex());
 	</event>
+	<event type="documentList.change">
+		Documents.setActiveIndex(documentList.getSelection());
+	</event>
 </plugin>

@@ -57,6 +57,7 @@ class DocumentController extends XMLController {
 			for (p in plugins) {
 				var uip:IUserInterfacePlugin = cast(p, IUserInterfacePlugin);
 				if (uip.location == "document") {
+					uip.document = _editor;
 					var position:String = XPathUtil.getXPathValue(uip.configXML, "/config/position/text()");
 					if (position == null) {
 						position = "right";

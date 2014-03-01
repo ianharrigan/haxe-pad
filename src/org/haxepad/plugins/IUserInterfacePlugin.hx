@@ -7,4 +7,5 @@ interface IUserInterfacePlugin extends IPlugin {
 	public var ui(default, default):Xml;
 	public var component(default, default):Component;
 	public var eventMap(default, default):Map<String, String>;
+	public var document(default, default):Component;
 }

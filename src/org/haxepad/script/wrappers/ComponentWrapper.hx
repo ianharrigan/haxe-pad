@@ -1,6 +1,7 @@
 package org.haxepad.script.wrappers;
 
 import haxe.ui.toolkit.containers.ListView;
+import haxe.ui.toolkit.controls.TextInput;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.data.ArrayDataSource;
 import haxe.ui.toolkit.data.IDataSource;
@@ -13,6 +14,10 @@ class ComponentWrapper {
 	}
 	
 	public function getText():String {
+		if (Std.is(_c, ListView)) {
+			return cast(_c, ListView).selectedItems[0].text;
+		}
+		
 		return _c.text;
 	}
 	
@@ -50,7 +55,18 @@ class ComponentWrapper {
 		if (Std.is(_c, ListView)) {
 			if (Std.is(value, Int)) {
 				cast(_c, ListView).selectedIndex = value;
+				cast(_c, ListView).ensureVisible(cast(_c, ListView).selectedItems[0]); //TODO: doesnt work
 			}
+		} else if (Std.is(_c, TextInput)) {
+			cast(_c, TextInput).replaceSelectedText(value);
 		}
+	}
+	
+	public function getSelection():Dynamic {
+		if (Std.is(_c, ListView)) {
+			return cast(_c, ListView).selectedIndex;
+		}
+		
+		return null;
 	}
 }

@@ -1,7 +1,9 @@
 package org.haxepad.plugins;
 
+import flash.events.Event;
 import haxe.ui.toolkit.core.Controller;
 import haxe.ui.toolkit.core.Toolkit;
+import haxe.ui.toolkit.events.UIEvent;
 import haxe.ui.toolkit.util.Identifier;
 import org.haxepad.managers.EventManager;
 import org.haxepad.script.wrappers.ComponentWrapper;
@@ -15,6 +17,7 @@ class UserInterfacePlugin extends Plugin implements IUserInterfacePlugin {
 	public var ui(default, default):Xml;
 	public var component(default, default):Component;
 	public var eventMap(default, default):Map<String, String>;
+	public var document(default, default):Component;
 	
 	private var _uid:String;
 	private var _controller:Controller;
@@ -48,20 +51,35 @@ class UserInterfacePlugin extends Plugin implements IUserInterfacePlugin {
 		_uid = Identifier.createObjectId(this);
 		component = Toolkit.processXml(ui);
 		
+		_controller = new Controller(component);
 		for (eventType in eventMap.keys()) {
-			EventManager.addEventListener(eventType, onPluginEvent);
+			var parts:Array<String> = eventType.split(".");
+			var c:Component = _controller.getComponent(parts[0]);
+			if (c != null) {
+				c.addEventListener(UIEvent.PREFIX + parts[1], onUIEvent);
+			} else {
+				EventManager.addEventListener(eventType, onPluginEvent);
+			}
+			
 		}
+	}
+	
+	private function onUIEvent(event:UIEvent):Void {
+		var key = event.component.id + "." + StringTools.replace(event.type, UIEvent.PREFIX, "");
+		var script:String = eventMap.get(key);
+		executeScript(script, event);
 	}
 	
 	private function onPluginEvent(event:PluginEvent):Void {
 		var script:String = eventMap.get(event.type);
-		
+		executeScript(script, event);
+	}
+	
+	private function executeScript(script:String, event:Event = null):Void {
 		var objects:Map<String, Dynamic> = new Map<String, Dynamic>();		
-		if (_controller == null) {
-			_controller = new Controller(component);
-		}
 		objects.set("controller", _controller);
 		objects.set("view", _controller.view);
+		objects.set("document", new ComponentWrapper(document));
 		for (c in _controller.namedComponents) {
 			var d:Dynamic = _controller.getComponentAs(c.id, Type.getClass(c));
 			objects.set(c.id, new ComponentWrapper(d));

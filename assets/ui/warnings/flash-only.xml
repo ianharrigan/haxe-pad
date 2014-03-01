@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hbox styleName="warning" width="100%">
+	<image resource="img/exclamation.png" height="100%" />
+	<text text="Flash only due to limitations" width="100%" />	
+</hbox>

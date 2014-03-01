@@ -5,8 +5,40 @@
 	<type>ui</type>
 	<location>document</location>
 	<ui>
-		<listview width="200" height="100%">
-			<array>Snippet 1,Snippet 2,Snippet 3,Snippet 4,Snippet 5,Snippet 6,Snippet 7,Snippet 8,Snippet 9,Snippet 10</array>
-		</listview>
+		<vbox width="200" height="100%">
+			<listview id="snippetList" width="100%" height="100%">
+				<array>Snippet 1,Snippet 2,Snippet 3,Snippet 4,Snippet 5,Snippet 6,Snippet 7,Snippet 8,Snippet 9,Snippet 10</array>
+			</listview>
+			<import resource="ui/warnings/flash-only.xml" />
+		</vbox>
 	</ui>
+	<event type="snippetList.doubleClick">
+		var snippetName = snippetList.getText();
+		var snippet = null;
+		if (snippetName == "Snippet 1") {
+			snippet = "This is snippet 1";
+		} else if (snippetName == "Snippet 2") {
+			snippet = "This is snippet 2";
+		} else if (snippetName == "Snippet 3") {
+			snippet = "This is snippet 3";
+		} else if (snippetName == "Snippet 4") {
+			snippet = "This is snippet 4";
+		} else if (snippetName == "Snippet 5") {
+			snippet = "This is snippet 5";
+		} else if (snippetName == "Snippet 6") {
+			snippet = "This is snippet 6";
+		} else if (snippetName == "Snippet 7") {
+			snippet = "This is snippet 7";
+		} else if (snippetName == "Snippet 8") {
+			snippet = "This is snippet 8";
+		} else if (snippetName == "Snippet 9") {
+			snippet = "This is snippet 9";
+		} else if (snippetName == "Snippet 10") {
+			snippet = "This is snippet 10";
+		}
+		
+		if (snippet != null) {
+			document.setSelection(snippet);
+		}
+	</event>
 </plugin>
