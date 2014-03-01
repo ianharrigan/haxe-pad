@@ -3,10 +3,27 @@
 	<plugin>
 		<id>document-switcher</id>
 	</plugin>
+
+	<!--
+	<plugin>
+		<id>test-ui</id>
+		<config>
+			<position>right</position>
+		</config>
+	</plugin>
+	-->
+	
 	<plugin>
 		<id>document-list</id>
 		<config>
-			
+			<position>right</position>
+		</config>
+	</plugin>
+	
+	<plugin>
+		<id>snippets</id>
+		<config>
+			<position>right</position>
 		</config>
 	</plugin>
 </plugins>

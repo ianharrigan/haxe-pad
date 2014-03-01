@@ -47,6 +47,10 @@ class PluginManager {
 		for (p in _plugins) {
 			if (p.id == id) {
 				var c:IPlugin = p.clone();
+				if (configXML != null) {
+					c.configXML = Xml.parse(configXML.toString());
+				}
+				//c.init();
 				_userPlugins.push(c);
 			}
 		}
@@ -56,7 +60,9 @@ class PluginManager {
 		var array:Array<IPlugin> = new Array<IPlugin>();
 		for (p in _userPlugins) {
 			if (Std.is(p, type)) {
-				array.push(p);
+				var c:IPlugin = p.clone();
+				c.init();
+				array.push(c);
 			}
 		}
 		return array;

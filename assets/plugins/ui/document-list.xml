@@ -3,11 +3,13 @@
 	<id>document-list</id>
 	<name>Document List</name>
 	<type>ui</type>
-	<events>
-		<event>document.open</event>
-		<event>document.close</event>
-	</events>
+	<location>document</location>
 	<ui>
-		<button text="bob" />
+		<listview id="documentList" width="200" height="100%">
+		</listview>
 	</ui>
+	<event type="document.add">
+		documentList.removeAll();
+		documentList.add(Documents.listDocuments());
+	</event>
 </plugin>

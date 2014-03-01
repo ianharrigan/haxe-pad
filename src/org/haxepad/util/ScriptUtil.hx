@@ -1,11 +1,11 @@
 package org.haxepad.util;
 import org.haxepad.script.Popups;
 import org.haxepad.script.ObjectCache;
-import org.haxepad.script.wrappers.ComponentsWrapper;
+import org.haxepad.script.wrappers.ComponentWrapper;
 import org.haxepad.script.wrappers.DocumentManagerWrapper;
 
 class ScriptUtil {
-	public static function exec(script:String, id:String):Dynamic {
+	public static function exec(script:String, id:String, objects:Map<String, Dynamic> = null):Dynamic {
 		if (script == null || id == null || id.length == 0) {
 			return null;
 		}
@@ -23,8 +23,12 @@ class ScriptUtil {
 		var popupsWrapper:Popups = new Popups();
 		interp.variables.set("Popups", popupsWrapper);
 
-		var componentsWrapper:ComponentsWrapper = new ComponentsWrapper();
-		interp.variables.set("Components", componentsWrapper);
+		if (objects != null) {
+			for (key in objects.keys()) {
+				var o = objects.get(key);
+				interp.variables.set(key, o);
+			}
+		}
 		
 		return interp.execute(program);
 	}

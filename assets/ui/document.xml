@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<vbox width="100%" height="100%">
-	<code id="document-content" width="100%" height="100%" />
+<vbox width="100%" height="100%" id="document-vbox">
+	<hbox width="100%" height="100%" id="document-hbox">
+		<code id="document-content" width="100%" height="100%" />
+	</hbox>
 </vbox>

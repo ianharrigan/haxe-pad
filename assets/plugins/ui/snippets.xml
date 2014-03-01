@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin>
+	<id>snippets</id>
+	<name>Snippets</name>
+	<type>ui</type>
+	<location>document</location>
+	<ui>
+		<listview width="200" height="100%">
+			<array>Snippet 1,Snippet 2,Snippet 3,Snippet 4,Snippet 5,Snippet 6,Snippet 7,Snippet 8,Snippet 9,Snippet 10</array>
+		</listview>
+	</ui>
+</plugin>

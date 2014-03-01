@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin>
+	<id>test-ui</id>
+	<name>Test UI</name>
+	<type>ui</type>
+	<location>document</location>
+	<ui>
+		<vbox width="100%">
+			<button id="testButton" text="Test Button" width="100%" />
+			<textinput id="testInput" text="Test Input" width="100%" />
+		</vbox>
+	</ui>
+	<event type="document.add">
+		trace("DOCUMENT ADDED!");
+		testInput.setText("document added!!!");
+	</event>
+</plugin>

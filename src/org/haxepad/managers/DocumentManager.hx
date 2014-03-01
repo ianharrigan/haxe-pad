@@ -1,5 +1,6 @@
 package org.haxepad.managers;
 
+import flash.events.Event;
 import haxe.ui.dialogs.files.FileDetails;
 import haxe.ui.dialogs.files.FileDialogs;
 import haxe.ui.dialogs.files.FileType;
@@ -7,6 +8,7 @@ import haxe.ui.toolkit.containers.TabView;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.Controller;
 import org.haxepad.DocumentController;
+import org.haxepad.plugins.PluginEvent;
 import org.haxepad.util.FileInfo;
 
 class DocumentManager {
@@ -19,7 +21,7 @@ class DocumentManager {
 	private static function get_activeDocumentIndex():Int {
 		return documentTabs.selectedIndex;
 	}
-	
+
 	private static function set_activeDocumentIndex(value:Int):Int {
 		documentTabs.selectedIndex = value;
 		return value;
@@ -39,8 +41,13 @@ class DocumentManager {
 	public static function openDocument():Void {
 		FileDialogs.openFile({dir: PrefsManager.lastDir, readContents: true}, function(details:FileDetails) {
 			if (details != null) {
-				PrefsManager.lastDir = StringTools.replace(details.filePath, details.name, "");
+				#if !flash
+					PrefsManager.lastDir = StringTools.replace(details.filePath, details.name, "");
+				#end
 				addDocument(details);
+				
+				var event:PluginEvent = new PluginEvent(PluginEvent.DOCUMENT_OPEN);
+				EventManager.dispatchEvent(event);
 			}
 		});
 	}
@@ -52,6 +59,9 @@ class DocumentManager {
 		var styleName:String = FileInfo.getStyle(details.name);
 		documentTabs.addChild(controller.view);
 		documentTabs.selectedIndex = documentTabs.pageCount - 1;
+		
+		var event:PluginEvent = new PluginEvent(PluginEvent.DOCUMENT_ADD);
+		EventManager.dispatchEvent(event);
 	}
 	
 	public static function closeDocument(index:Int):Void {
@@ -60,6 +70,9 @@ class DocumentManager {
 		if (documentTabs.pageCount == 0) {
 			newDocument();
 		}
+		
+		var event:PluginEvent = new PluginEvent(PluginEvent.DOCUMENT_CLOSE);
+		EventManager.dispatchEvent(event);
 	}
 	
 	public static function saveDocumentAs(index:Int):Void {
