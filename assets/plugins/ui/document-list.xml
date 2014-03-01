@@ -8,8 +8,12 @@
 		<listview id="documentList" width="200" height="100%">
 		</listview>
 	</ui>
-	<event type="document.add">
+	<event type="document.add,document.close">
 		documentList.removeAll();
 		documentList.add(Documents.listDocuments());
+		documentList.setSelection(Documents.getActiveIndex());
+	</event>
+	<event type="document.switch">
+		documentList.setSelection(Documents.getActiveIndex());
 	</event>
 </plugin>

@@ -5,6 +5,8 @@ import haxe.ui.toolkit.core.PopupManager;
 import haxe.ui.toolkit.core.XMLController;
 import haxe.ui.toolkit.events.MenuEvent;
 import haxe.ui.toolkit.events.UIEvent;
+import org.haxepad.managers.EventManager;
+import org.haxepad.plugins.PluginEvent;
 import org.haxepad.popups.AboutController;
 import org.haxepad.managers.DocumentManager;
 import org.haxepad.popups.FindController;
@@ -59,6 +61,7 @@ class MainController extends XMLController {
 
 		
 		DocumentManager.documentTabs.addEventListener(UIEvent.GLYPH_CLICK, onTabGlyphClick);
+		DocumentManager.documentTabs.addEventListener(UIEvent.CHANGE, onTabChange);
 		DocumentManager.newDocument();
 	}
 	
@@ -91,5 +94,10 @@ class MainController extends XMLController {
 	
 	private function onTabGlyphClick(event:UIEvent):Void {
 		DocumentManager.closeDocument(event.data);
+	}
+	
+	private function onTabChange(event:UIEvent):Void {
+		var pluginEvent:PluginEvent = new PluginEvent(PluginEvent.DOCUMENT_SWITCH);
+		EventManager.dispatchEvent(pluginEvent);
 	}
 }

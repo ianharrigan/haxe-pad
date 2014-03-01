@@ -32,9 +32,13 @@ class UserInterfacePlugin extends Plugin implements IUserInterfacePlugin {
 		
 		var eventNodes = XPathUtil.getXPathNodes(xml, "/plugin/event");
 		for (eventNode in eventNodes) {
-			var eventType:String = eventNode.get("type");
-			var script:String = XPathUtil.getXPathValue(eventNode, "text()");
-			eventMap.set(eventType, script);
+			var eventTypes:String = eventNode.get("type");
+			var eventTypesArr:Array<String> = eventTypes.split(",");
+			for (eventType in eventTypesArr) {
+				eventType = StringTools.trim(eventType);
+				var script:String = XPathUtil.getXPathValue(eventNode, "text()");
+				eventMap.set(eventType, script);
+			}
 		}
 
 	}

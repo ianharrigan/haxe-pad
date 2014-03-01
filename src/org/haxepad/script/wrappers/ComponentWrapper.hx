@@ -45,4 +45,12 @@ class ComponentWrapper {
 			cast(_c, ListView).dataSource = ds;
 		}
 	}
+	
+	public function setSelection(value:Dynamic):Void {
+		if (Std.is(_c, ListView)) {
+			if (Std.is(value, Int)) {
+				cast(_c, ListView).selectedIndex = value;
+			}
+		}
+	}
 }
