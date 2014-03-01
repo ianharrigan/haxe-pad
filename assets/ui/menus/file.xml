@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ui:menu xmlns:ui="haxeui::ui">
-	<ui:menuitem id="menu-file-new" text="New" />
-	<ui:menuitem id="menu-file-open" text="Open..." />
-	<ui:menuitem id="menu-file-save" text="Save" condition="Client.target != 'flash'" />
-	<ui:menuitem id="menu-file-save-as" text="Save As..." />
+<menu>
+	<menuitem id="menu-file-new" text="New" />
+	<menuitem id="menu-file-open" text="Open..." />
+	<menuitem id="menu-file-save" text="Save" condition="Client.target != 'flash'" />
+	<menuitem id="menu-file-save-as" text="Save As..." />
 	
-	<ui:menu text="Recent Files" id="menu-file-recent" condition="Client.target != 'flash'">
-		<ui:menuitem id="" text="SPARQL INSERT.txt" />
-		<ui:menuitem id="" text="SPARQL.txt" />
-		<ui:menuitem id="" text="test file.txt" />
-	</ui:menu>
+	<menu text="Recent Files" id="menu-file-recent" condition="Client.target != 'flash'">
+		<menuitem id="" text="SPARQL INSERT.txt" />
+		<menuitem id="" text="SPARQL.txt" />
+		<menuitem id="" text="test file.txt" />
+	</menu>
 	
-	<ui:menuitem id="menu-file-exit" text="Exit" condition="Client.target != 'flash'"/>
-</ui:menu>
+	<menuitem id="menu-file-exit" text="Exit" condition="Client.target != 'flash'"/>
+</menu>

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ui:vbox text="Test" xmlns:ui="haxeui::ui">
-	<ui:text text="Just a test panel, nothing to see here" />
-</ui:vbox>
+<vbox text="Test">
+	<text text="Just a test panel, nothing to see here" />
+</vbox>

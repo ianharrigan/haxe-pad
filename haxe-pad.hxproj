@@ -17,16 +17,18 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="C:\tools\Haxe\haxe/lib\haxeui/1,0,3/styles" />
-    <class path="bin/windows/cpp/haxe" />
+    <class path="X:\Haxe\haxe\lib\haxeui\1,2,2\styles" />
+    <class path="X:\Haxe\haxe\lib\haxeui-file-dialogs\0,1,0\assets" />
+    <class path="bin\windows\cpp\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="tools=1.1.2&#xA;openfl=1.1&#xA;display&#xA;windows&#xA;desktop&#xA;no-compilation" />
+    <option directives="tools=1.2.5&#xA;lime_native&#xA;no-compilation&#xA;display&#xA;windows&#xA;desktop&#xA;no-compilation" />
     <option flashStrict="False" />
+    <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="--no-output&#xA;-dce std&#xA;--macro allowPackage(&quot;flash&quot;)&#xA;--macro keep(&quot;org.haxepad.Main&quot;)" />
+    <option additional="--no-output&#xA;-dce std&#xA;-resource assets/css/icons.css@css/icons.css&#xA;-resource assets/css/styles.css@css/styles.css&#xA;-resource assets/img/icons/application-blue.png@img/icons/application-blue.png&#xA;-resource assets/img/icons/document.png@img/icons/document.png&#xA;-resource assets/img/icons/document-binary.png@img/icons/document-binary.png&#xA;-resource assets/img/icons/document-block.png@img/icons/document-block.png&#xA;-resource assets/img/icons/document-code.png@img/icons/document-code.png&#xA;-resource assets/img/icons/document-excel.png@img/icons/document-excel.png&#xA;-resource assets/img/icons/document--exclamation.png@img/icons/document--exclamation.png&#xA;-resource assets/img/icons/document-film.png@img/icons/document-film.png&#xA;-resource assets/img/icons/document-flash-movie.png@img/icons/document-flash-movie.png&#xA;-resource assets/img/icons/document-image.png@img/icons/document-image.png&#xA;-resource assets/img/icons/document-list.png@img/icons/document-list.png&#xA;-resource assets/img/icons/document-music.png@img/icons/document-music.png&#xA;-resource assets/img/icons/document-pdf.png@img/icons/document-pdf.png&#xA;-resource assets/img/icons/document-powerpoint.png@img/icons/document-powerpoint.png&#xA;-resource assets/img/icons/document-text.png@img/icons/document-text.png&#xA;-resource assets/img/icons/folder-horizontal.png@img/icons/folder-horizontal.png&#xA;-resource assets/img/icons/image.png@img/icons/image.png&#xA;-resource assets/img/cross-small.png@img/cross-small.png&#xA;-resource assets/img/exclamation.png@img/exclamation.png&#xA;-resource assets/ui/menus/edit.xml@ui/menus/edit.xml&#xA;-resource assets/ui/menus/file.xml@ui/menus/file.xml&#xA;-resource assets/ui/menus/help.xml@ui/menus/help.xml&#xA;-resource assets/ui/menus/program.xml@ui/menus/program.xml&#xA;-resource assets/ui/menus/search.xml@ui/menus/search.xml&#xA;-resource assets/ui/popups/about.xml@ui/popups/about.xml&#xA;-resource assets/ui/popups/file-selection.xml@ui/popups/file-selection.xml&#xA;-resource assets/ui/popups/find.xml@ui/popups/find.xml&#xA;-resource assets/ui/popups/find-replace.xml@ui/popups/find-replace.xml&#xA;-resource assets/ui/preferences/main.xml@ui/preferences/main.xml&#xA;-resource assets/ui/preferences/prefs-defaults.xml@ui/preferences/prefs-defaults.xml&#xA;-resource assets/ui/preferences/prefs-test.xml@ui/preferences/prefs-test.xml&#xA;-resource assets/ui/warnings/not-implemented.xml@ui/warnings/not-implemented.xml&#xA;-resource assets/ui/document.xml@ui/document.xml&#xA;-resource assets/ui/main.xml@ui/main.xml&#xA;-resource img/rtfview/edit-alignment-center.png@img/rtfview/edit-alignment-center.png&#xA;-resource img/rtfview/edit-alignment-justify.png@img/rtfview/edit-alignment-justify.png&#xA;-resource img/rtfview/edit-alignment-left.png@img/rtfview/edit-alignment-left.png&#xA;-resource img/rtfview/edit-alignment-right.png@img/rtfview/edit-alignment-right.png&#xA;-resource img/rtfview/edit-bold.png@img/rtfview/edit-bold.png&#xA;-resource img/rtfview/edit-italic.png@img/rtfview/edit-italic.png&#xA;-resource img/rtfview/edit-list.png@img/rtfview/edit-list.png&#xA;-resource img/rtfview/edit-underline.png@img/rtfview/edit-underline.png&#xA;-resource styles/gradient/gradient.css@styles/gradient/gradient.css&#xA;-resource styles/gradient/gradient_mobile.css@styles/gradient/gradient_mobile.css&#xA;-resource styles/gradient/arrow_down.png@styles/gradient/arrow_down.png&#xA;-resource styles/gradient/arrow_down_dark.png@styles/gradient/arrow_down_dark.png&#xA;-resource styles/gradient/arrow_left.png@styles/gradient/arrow_left.png&#xA;-resource styles/gradient/arrow_right.png@styles/gradient/arrow_right.png&#xA;-resource styles/gradient/arrow_right_dark.png@styles/gradient/arrow_right_dark.png&#xA;-resource styles/gradient/arrow_right2.png@styles/gradient/arrow_right2.png&#xA;-resource styles/gradient/arrow_up.png@styles/gradient/arrow_up.png&#xA;-resource styles/gradient/circle_dark.png@styles/gradient/circle_dark.png&#xA;-resource styles/gradient/cross_dark.png@styles/gradient/cross_dark.png&#xA;-resource styles/gradient/gripper_horizontal.png@styles/gradient/gripper_horizontal.png&#xA;-resource styles/gradient/gripper_vertical.png@styles/gradient/gripper_vertical.png&#xA;--macro allowPackage(&quot;flash&quot;)&#xA;--macro keep(&quot;org.haxepad.Main&quot;)" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
@@ -34,6 +36,7 @@
     <library name="actuate" />
     <library name="hscript" />
     <library name="haxeui" />
+    <library name="haxeui-file-dialogs" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
@@ -45,7 +48,7 @@
   </library>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>
-    <!-- example: <hidden path="..." /> -->
+    <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
   <preBuildCommand />

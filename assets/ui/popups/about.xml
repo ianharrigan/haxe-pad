@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ui:vbox xmlns:ui="haxeui::ui" xmlns:style="haxeui::style">
-	<style:css>
+<vbox>
+	<style>
 		#appName {
 			fontSize: 20;
 		}
-	</style:css>
-	<ui:text text="HaxePad" id="appName" />
-	<ui:text text="Flash version" condition="Client.platform == 'flash'"/>
-	<ui:text text="Windows version" condition="Client.platform == 'windows'"/>
-	<ui:text text="AIR version" condition="Client.platform == 'air'"/>
+	</style>
+	<text text="HaxePad" id="appName" />
+	<text text="Flash version" condition="Client.platform == 'flash'"/>
+	<text text="Windows version" condition="Client.platform == 'windows'"/>
+	<text text="AIR version" condition="Client.platform == 'air'"/>
 	
-	<ui:text id="dpi"/>
-</ui:vbox>
+	<text id="dpi"/>
+</vbox>

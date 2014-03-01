@@ -1,11 +1,13 @@
 package org.haxepad.managers;
 
+import haxe.ui.dialogs.files.FileDetails;
+import haxe.ui.dialogs.files.FileDialogs;
+import haxe.ui.dialogs.files.FileType;
 import haxe.ui.toolkit.containers.TabView;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.Controller;
 import org.haxepad.DocumentController;
-import org.haxepad.util.FileDetails;
-import org.haxepad.util.FileType;
+import org.haxepad.util.FileInfo;
 
 class DocumentManager {
 	private static var _documentControllers:Array<DocumentController> = new Array<DocumentController>();
@@ -35,8 +37,9 @@ class DocumentManager {
 	}
 	
 	public static function openDocument():Void {
-		FileSystemManager.openFile(function(details:FileDetails) {
+		FileDialogs.openFile({dir: PrefsManager.lastDir, readContents: true}, function(details:FileDetails) {
 			if (details != null) {
+				PrefsManager.lastDir = StringTools.replace(details.filePath, details.name, "");
 				addDocument(details);
 			}
 		});
@@ -46,7 +49,7 @@ class DocumentManager {
 		var controller:DocumentController = new DocumentController(details);
 		_documentControllers.push(controller);
 		cast(controller.view, Component).text = details.name;
-		var styleName:String = FileType.getStyle(details.name);
+		var styleName:String = FileInfo.getStyle(details.name);
 		documentTabs.addChild(controller.view);
 		documentTabs.selectedIndex = documentTabs.pageCount - 1;
 	}
@@ -71,8 +74,9 @@ class DocumentManager {
 			details.contents = StringTools.replace(controller.fileDetails.contents, "\n", "\r\n");
 			#end
 		}
-		
-		FileSystemManager.saveFileAs(details, function(details:FileDetails) {
+
+		FileDialogs.saveFileAs({}, details, function(details:FileDetails) {
+			PrefsManager.lastDir = StringTools.replace(details.filePath, details.name, "");
 			documentTabs.setTabText(index, details.name);
 		});
 	}

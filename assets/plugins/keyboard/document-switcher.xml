@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <plugin>
 	<id>document-switcher</id>
+	<name>Document Switcher</name>
 	<type>keyboard</type>
+	<config>
+		<hasMenuItem>true</hasMenuItem>
+	</config>
 	<activation>
 		<keyCombination>CTRL+TAB</keyCombination>
 		<script>

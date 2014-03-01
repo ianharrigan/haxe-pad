@@ -18,6 +18,7 @@
 	<haxelib name="actuate" />
 	<haxelib name="hscript" />
 	<haxelib name="haxeui" />
+	<haxelib name="haxeui-file-dialogs" />
 	
 	<!-- assets -->
 	<icon path="assets/application-default-icon.svg" />
@@ -29,8 +30,10 @@
 	<!-- optimize output -->
 	<haxeflag name="-dce std" if="haxe3" />
 	
+	<!--
 	<haxedef name="air" if="flash" />
 	<haxelib name="air3" if="flash" />
+	-->
 	
 	<!--
 	*********************************************************************************************
@@ -40,24 +43,6 @@
 	<haxeflag name="-resource" value="assets/css/icons.css@css/icons.css" />
 	<haxeflag name="-resource" value="assets/css/styles.css@css/styles.css" />
 	
-	<haxeflag name="-resource" value="assets/img/icons/application-blue.png@img/icons/application-blue.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document.png@img/icons/document.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document-binary.png@img/icons/document-binary.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document-block.png@img/icons/document-block.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document-code.png@img/icons/document-code.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document-excel.png@img/icons/document-excel.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document--exclamation.png@img/icons/document--exclamation.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document-film.png@img/icons/document-film.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document-flash-movie.png@img/icons/document-flash-movie.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document-image.png@img/icons/document-image.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document-list.png@img/icons/document-list.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document-music.png@img/icons/document-music.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document-pdf.png@img/icons/document-pdf.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document-powerpoint.png@img/icons/document-powerpoint.png" />
-	<haxeflag name="-resource" value="assets/img/icons/document-text.png@img/icons/document-text.png" />
-	<haxeflag name="-resource" value="assets/img/icons/folder-horizontal.png@img/icons/folder-horizontal.png" />
-	<haxeflag name="-resource" value="assets/img/icons/image.png@img/icons/image.png" />
-
 	<haxeflag name="-resource" value="assets/img/cross-small.png@img/cross-small.png" />
 	<haxeflag name="-resource" value="assets/img/exclamation.png@img/exclamation.png" />
 	
@@ -68,7 +53,6 @@
 	<haxeflag name="-resource" value="assets/ui/menus/search.xml@ui/menus/search.xml" />
 	
 	<haxeflag name="-resource" value="assets/ui/popups/about.xml@ui/popups/about.xml" />
-	<haxeflag name="-resource" value="assets/ui/popups/file-selection.xml@ui/popups/file-selection.xml" />
 	<haxeflag name="-resource" value="assets/ui/popups/find.xml@ui/popups/find.xml" />
 	<haxeflag name="-resource" value="assets/ui/popups/find-replace.xml@ui/popups/find-replace.xml" />
 
