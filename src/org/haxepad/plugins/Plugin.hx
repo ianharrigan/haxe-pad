@@ -7,6 +7,7 @@ class Plugin implements IPlugin {
 	public var configXML(default, default):Xml;
 	public var activationScript(default, default):String;
 	public var deactivationScript(default, default):String;
+	public var excludePlatforms(default, default):String;
 	
 	public function new() {
 		
@@ -21,6 +22,7 @@ class Plugin implements IPlugin {
 		name = XPathUtil.getXPathValue(xml, "/plugin/name/text()");
 		activationScript = XPathUtil.getXPathValue(xml, "/plugin/activation/script/text()");
 		deactivationScript = XPathUtil.getXPathValue(xml, "/plugin/deactivation/script/text()");
+		excludePlatforms = XPathUtil.getXPathValue(xml, "/plugin/platforms/exclude/text()");
 	}
 	
 	public function clone():IPlugin {
@@ -30,6 +32,7 @@ class Plugin implements IPlugin {
 		c.configXML = this.configXML;
 		c.activationScript = this.activationScript;
 		c.deactivationScript = this.deactivationScript;
+		c.excludePlatforms = this.excludePlatforms;
 		return c;
 	}
 }

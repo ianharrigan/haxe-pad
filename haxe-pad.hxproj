@@ -17,13 +17,13 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="X:\Haxe\haxe\lib\haxeui\1,2,2\styles" />
-    <class path="X:\Haxe\haxe\lib\haxeui-file-dialogs\0,1,0\assets" />
-    <class path="bin\windows\cpp\haxe" />
+    <class path="C:\Servers\Haxe\haxe\lib\haxeui\1,2,3\styles" />
+    <class path="C:\Servers\Haxe\haxe\lib\haxeui-file-dialogs\0,1,0\assets" />
+    <class path="bin\windows\neko\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="tools=1.2.5&#xA;lime_native&#xA;no-compilation&#xA;display&#xA;windows&#xA;desktop&#xA;no-compilation" />
+    <option directives="tools=1.2.5&#xA;lime_native&#xA;no-compilation&#xA;display&#xA;windows&#xA;desktop" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />

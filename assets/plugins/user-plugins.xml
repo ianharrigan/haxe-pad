@@ -4,14 +4,12 @@
 		<id>document-switcher</id>
 	</plugin>
 
-	<!--
 	<plugin>
-		<id>test-ui</id>
+		<id>output-watcher</id>
 		<config>
-			<position>right</position>
+			<position>bottom</position>
 		</config>
 	</plugin>
-	-->
 	
 	<plugin>
 		<id>document-list</id>
@@ -19,11 +17,21 @@
 			<position>right</position>
 		</config>
 	</plugin>
+
+	<plugin>
+		<id>haxe-compile</id>
+		<config>
+			<icon verb="compile">img/icons/gear.png</icon>
+			<icon verb="run">img/icons/control.png</icon>
+		</config>
+	</plugin>
 	
+	<!--
 	<plugin>
 		<id>snippets</id>
 		<config>
 			<position>right</position>
 		</config>
 	</plugin>
+	-->
 </plugins>

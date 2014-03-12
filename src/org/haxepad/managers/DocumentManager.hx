@@ -16,6 +16,7 @@ class DocumentManager {
 	public static var documentTabs(default, default):TabView;
 
 	public static var activeDocumentIndex(get, set):Int;
+	public static var activeDocument(get, null):DocumentController;
 	public static var documentCount(get, null):Int;
 	
 	private static function get_activeDocumentIndex():Int {
@@ -25,6 +26,10 @@ class DocumentManager {
 	private static function set_activeDocumentIndex(value:Int):Int {
 		documentTabs.selectedIndex = value;
 		return value;
+	}
+	
+	private static function get_activeDocument():DocumentController {
+		return _documentControllers[activeDocumentIndex];
 	}
 	
 	private static function get_documentCount():Int {

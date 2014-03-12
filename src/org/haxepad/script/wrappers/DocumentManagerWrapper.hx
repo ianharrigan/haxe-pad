@@ -20,4 +20,9 @@ class DocumentManagerWrapper {
 	public function getDocumentCount():Int {
 		return DocumentManager.documentCount;
 	}
+	
+	public function getActiveDocument():Dynamic {
+		var wrapper:DocumentControllerWrapper = new DocumentControllerWrapper(DocumentManager.activeDocument);
+		return wrapper;
+	}
 }

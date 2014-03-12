@@ -4,9 +4,9 @@ import org.haxepad.util.XPathUtil;
 
 class KeyboardPlugin extends Plugin implements IKeyboardPlugin {
 	public var activationCtrlKey(default, default):Bool;
-	public var activationKeyCode(default, default):Int;
+	public var activationKeyCode(default, default):UInt;
 	public var deactivationCtrlKey(default, default):Bool;
-	public var deactivationKeyCode(default, default):Int;
+	public var deactivationKeyCode(default, default):UInt;
 	
 	public function new() {
 		super();

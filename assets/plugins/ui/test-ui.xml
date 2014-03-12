@@ -3,15 +3,13 @@
 	<id>test-ui</id>
 	<name>Test UI</name>
 	<type>ui</type>
-	<location>document</location>
+	<location>main</location>
 	<ui>
-		<vbox width="100%">
-			<button id="testButton" text="Test Button" width="100%" />
-			<textinput id="testInput" text="Test Input" width="100%" />
+		<vbox width="100%" style="padding:5;backgroundColor:0xdfdddd">
+			<textinput width="100%" height="120" />
 		</vbox>
 	</ui>
 	<event type="document.add">
 		trace("DOCUMENT ADDED!");
-		testInput.setText("document added!!!");
 	</event>
 </plugin>

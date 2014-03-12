@@ -76,10 +76,13 @@ class UserInterfacePlugin extends Plugin implements IUserInterfacePlugin {
 	}
 	
 	private function executeScript(script:String, event:Event = null):Void {
-		var objects:Map<String, Dynamic> = new Map<String, Dynamic>();		
+		var objects:Map<String, Dynamic> = new Map<String, Dynamic>();
 		objects.set("controller", _controller);
 		objects.set("view", _controller.view);
 		objects.set("document", new ComponentWrapper(document));
+		if (event != null) {
+			objects.set("event", event);
+		}
 		for (c in _controller.namedComponents) {
 			var d:Dynamic = _controller.getComponentAs(c.id, Type.getClass(c));
 			objects.set(c.id, new ComponentWrapper(d));

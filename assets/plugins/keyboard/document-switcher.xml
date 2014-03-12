@@ -17,7 +17,7 @@
 					activeIndex = 0;
 				}
 				
-				var list = Popups.showList(documentList, "Switch Document", activeIndex, false);
+				var list = Popups.showList(documentList, activeIndex, "Switch Document", false);
 				Cache.setValue("list", list);
 			} else {
 				var newIndex = list.getSelectedIndex() + 1;

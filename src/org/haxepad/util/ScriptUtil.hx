@@ -3,6 +3,7 @@ import org.haxepad.script.Popups;
 import org.haxepad.script.ObjectCache;
 import org.haxepad.script.wrappers.ComponentWrapper;
 import org.haxepad.script.wrappers.DocumentManagerWrapper;
+import org.haxepad.script.wrappers.SystemManagerWrapper;
 
 class ScriptUtil {
 	public static function exec(script:String, id:String, objects:Map<String, Dynamic> = null):Dynamic {
@@ -19,6 +20,9 @@ class ScriptUtil {
 
 		var documentsWrapper:DocumentManagerWrapper = new DocumentManagerWrapper();
 		interp.variables.set("Documents", documentsWrapper);
+
+		var systemWrapper:SystemManagerWrapper = new SystemManagerWrapper();
+		interp.variables.set("System", systemWrapper);
 		
 		var popupsWrapper:Popups = new Popups();
 		interp.variables.set("Popups", popupsWrapper);

@@ -20,8 +20,11 @@ class DocumentController extends XMLController {
 
 	public function new(fileDetails:FileDetails) {
 		super("ui/document.xml");
-		 _editor = getComponentAs("document-content", Code);
-		 _editor.syntax = FileInfo.getSyntax(fileDetails.name);
+		_editor = getComponentAs("document-content", Code);
+		_editor.syntax = FileInfo.getSyntax(fileDetails.name);
+		if (_editor.syntax.length == 0) {
+			_editor.wrapLines = true;
+		}
 		this.fileDetails = fileDetails;
 		
 		_editor.addEventListener(Event.ADDED_TO_STAGE, function(e) {

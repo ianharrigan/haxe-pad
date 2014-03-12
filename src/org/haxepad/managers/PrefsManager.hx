@@ -22,6 +22,10 @@ class PrefsManager {
 	public static function getPref(key:String, defaultValue:String = null, section:String = DEFAULT_SECTION):String {
 		var value:String = defaultValue;
 		
+		if (key == "flashPlayer") {
+			return "C:/temp/haxetest/FlashPlayerDebugger.exe";
+		}
+		
 		var so = SharedObject.getLocal(section);
 		if (so != null && so.data != null) {
 			if (Reflect.hasField(so.data, key)) {

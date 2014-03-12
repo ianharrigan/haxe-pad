@@ -1,5 +1,7 @@
 package org.haxepad.managers;
 
+import haxe.ui.toolkit.core.Client;
+import org.haxepad.plugins.CommandPlugin;
 import org.haxepad.plugins.IPlugin;
 import org.haxepad.plugins.KeyboardPlugin;
 import org.haxepad.plugins.UserInterfacePlugin;
@@ -18,6 +20,8 @@ class PluginManager {
 					p = new KeyboardPlugin();
 				case "ui":
 					p = new UserInterfacePlugin();
+				case "command":
+					p = new CommandPlugin();
 				default:
 			}
 		}
@@ -60,6 +64,10 @@ class PluginManager {
 		var array:Array<IPlugin> = new Array<IPlugin>();
 		for (p in _userPlugins) {
 			if (Std.is(p, type)) {
+				if (p.excludePlatforms != null && p.excludePlatforms.indexOf(Client.instance.platform) != -1) {
+					continue;
+				}
+
 				var c:IPlugin = p.clone();
 				c.init();
 				array.push(c);
@@ -70,6 +78,15 @@ class PluginManager {
 	
 	public static function findUserPlugin(id:String):IPlugin {
 		for (p in _userPlugins) {
+			if (p.id == id) {
+				return p;
+			}
+		}
+		return null;
+	}
+	
+	public static function findPluginInstance(id:String):IPlugin {
+		for (p in _plugins) {
 			if (p.id == id) {
 				return p;
 			}

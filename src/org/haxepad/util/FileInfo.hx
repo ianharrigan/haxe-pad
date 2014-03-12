@@ -1,4 +1,5 @@
 package org.haxepad.util;
+import haxe.ui.dialogs.files.FileSystemHelper;
 
 class FileInfo {
 	private static var _styles:Map<String, String> = [
@@ -45,5 +46,23 @@ class FileInfo {
 			ext = fileName.substring(n, fileName.length);
 		}
 		return ext;
+	}
+	
+	public static function getNameNoExt(fileName:String):String {
+		var name:String = null;
+		var n:Int = fileName.lastIndexOf(".");
+		if (n != -1) {
+			name = fileName.substring(0, n);
+		}
+		return name;
+	}
+	
+	public static function getDir(filePath:String):String {
+		filePath = FileSystemHelper.normalizePath(filePath);
+		var n:Int = filePath.lastIndexOf("/");
+		if (n != -1) {
+			filePath = filePath.substring(0, n);
+		}
+		return filePath;
 	}
 }

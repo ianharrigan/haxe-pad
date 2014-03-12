@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin>
+	<id>haxe-compile</id>
+	<name>Haxe Compile</name>
+	<type>command</type>
+	<platforms>
+		<exclude>flash</exclude>
+	</platforms>
+	<verb name="compile">
+		System.exec("haxe -cp %FILEDIR% -main Main -swf %FILEDIR%/%FILENAME_NOEXT%.swf");
+	</verb>
+	<verb name="run">
+		System.exec("%PREF_FLASH_PLAYER% %FILEDIR%/%FILENAME_NOEXT%.swf");
+	</verb>
+</plugin>

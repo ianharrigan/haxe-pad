@@ -5,6 +5,7 @@ import haxe.ui.toolkit.core.Root;
 import haxe.ui.toolkit.core.Toolkit;
 import org.haxepad.managers.KeyboardManager;
 import org.haxepad.managers.PluginManager;
+import org.haxepad.managers.SystemManager;
 import org.haxepad.plugins.IUserInterfacePlugin;
 import org.haxepad.util.MacroUtil;
 
@@ -20,6 +21,10 @@ class Main {
 		Toolkit.setTransitionForClass(Stack, "none");
 		Toolkit.setTransitionForClass(Menu, "none");
 		*/
+		
+		//SystemManager.exec("dir", []);
+		//return;
+		
 		Toolkit.init();
 		Toolkit.openFullscreen(function(root:Root) {
 			KeyboardManager.init(root);

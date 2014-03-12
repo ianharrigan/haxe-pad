@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hbox id="toolbar" width="100%">
+	<button id="toolbar-new" styleName="toolbar-new" />
+	<button id="toolbar-open" styleName="toolbar-open" />
+	<button id="toolbar-save" styleName="toolbar-save" />
+	<button id="toolbar-save-all" styleName="toolbar-save-all" condition="Client.target != 'flash'"/>
+	
+	<spacer width="5" />
+	
+	<button id="toolbar-find" styleName="toolbar-find" />
+	<button id="toolbar-find-replace" styleName="toolbar-find-replace" />
+
+	<spacer width="5" />
+	
+	<button id="toolbar-settings" styleName="toolbar-settings" />
+</hbox>

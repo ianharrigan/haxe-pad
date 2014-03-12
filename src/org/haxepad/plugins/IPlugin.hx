@@ -8,6 +8,7 @@ interface IPlugin {
 	public var deactivationScript(default, default):String;
 	public function fromXML(xml:Xml):Void;
 	public function init():Void;
+	public var excludePlatforms(default, default):String;
 	
 	public function clone():IPlugin;
 }

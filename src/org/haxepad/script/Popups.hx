@@ -12,12 +12,13 @@ class Popups {
 	}
 	
 	public function messageBox(message:String, title:String = "Haxe Pad"):Popup {
-		var p:Popup = PopupManager.instance.showSimple(RootManager.instance.roots[0], message, title);
+		var p:Popup = PopupManager.instance.showSimple(message, title);
 		return p;
 	}
 	
-	public function showList(items:Dynamic, title:String = "Haxe Pad", selectedIndex:Int = -1, modal:Bool = true):ListPopupWrapper {
-		var p:Popup = PopupManager.instance.showList(RootManager.instance.roots[0], items, title, selectedIndex, modal);
+	public function showList(items:Dynamic, selectedIndex:Int = -1, title:String = "Haxe Pad", modal:Bool = true):ListPopupWrapper {
+		var config:Dynamic = { modal: modal};
+		var p:Popup = PopupManager.instance.showList(items, selectedIndex, title, config);
 		var wrapper:ListPopupWrapper = new ListPopupWrapper(p);
 		return wrapper;
 	}

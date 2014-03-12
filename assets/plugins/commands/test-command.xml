@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin>
+	<id>test-command</id>
+	<name>Test Command</name>
+	<type>command</type>
+	<verb name="verb1">
+		System.exec("haxe -cp %FILEDIR% -main Main -swf %FILEDIR%/%FILENAME_NOEXT%.swf");
+	</verb>
+	<verb name="verb2">
+		trace("verb2");
+	</verb>
+</plugin>

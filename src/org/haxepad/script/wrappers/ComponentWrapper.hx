@@ -25,6 +25,16 @@ class ComponentWrapper {
 		_c.text = value;
 	}
 	
+	public function append(value:Dynamic):Void {
+		if (Std.is(value, String)) {
+			_c.text += cast(value, String);
+		}
+	}
+	
+	public function clear():Void {
+		_c.text = "";
+	}
+	
 	public function removeAll():Void {
 		if (Std.is(_c, ListView)) {
 			cast(_c, ListView).dataSource.removeAll();

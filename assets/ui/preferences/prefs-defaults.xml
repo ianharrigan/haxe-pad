@@ -7,7 +7,7 @@
 	</hbox>
 	
 	<text text="Theme:" />
-	<list text="Theme" width="100%">
+	<listSelector text="Theme" width="100%">
 		<array>Gradient</array>
-	</list>
+	</listSelector>
 </grid>

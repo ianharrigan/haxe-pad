@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin>
+	<id>output-watcher</id>
+	<name>Output Watcher</name>
+	<type>ui</type>
+	<location>main</location>
+	<platforms>
+		<exclude>flash</exclude>
+	</platforms>
+	<ui>
+		<vbox width="100%" style="padding:5;backgroundColor:0xdfdddd">
+			<textinput id="output" width="100%" height="120" multiline="true" wrapLines="false" />
+		</vbox>
+	</ui>
+	<event type="command.start">
+		output.clear();
+		output.append(event.data + "\n");
+	</event>
+	<event type="command.end,command.stdout,command.stderr">
+		output.append(event.data + "\n");
+	</event>
+</plugin>
