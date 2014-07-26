@@ -5,7 +5,7 @@ import flash.events.KeyboardEvent;
 import haxe.ui.dialogs.files.FileDetails;
 import haxe.ui.toolkit.containers.HBox;
 import haxe.ui.toolkit.containers.VBox;
-import haxe.ui.toolkit.controls.extended.Code;
+import haxe.ui.richtext.Code;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.XMLController;
 import org.haxepad.managers.PluginManager;

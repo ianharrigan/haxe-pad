@@ -19,6 +19,7 @@
 	<haxelib name="hscript" />
 	<haxelib name="haxeui" />
 	<haxelib name="haxeui-file-dialogs" />
+	<haxelib name="haxeui-rich-text" />
 	
 	<!-- assets -->
 	<icon path="assets/application-default-icon.svg" />
