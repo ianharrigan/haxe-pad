@@ -3,8 +3,10 @@ package org.haxepad.managers;
 import flash.events.Event;
 import haxe.ui.dialogs.files.FileDetails;
 import haxe.ui.dialogs.files.FileDialogs;
+import haxe.ui.dialogs.files.FileSystemHelper;
 import haxe.ui.dialogs.files.FileType;
 import haxe.ui.toolkit.containers.TabView;
+import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.Controller;
 import org.haxepad.DocumentController;
@@ -80,6 +82,33 @@ class DocumentManager {
 		EventManager.dispatchEvent(event);
 	}
 	
+	public static function saveDocument(index:Int):Void {
+		var controller:DocumentController = _documentControllers[index];
+		
+		var details:FileDetails = controller.fileDetails;
+		if (details.filePath == null) {
+			saveDocumentAs(index);
+		} else {
+			#if flash
+			details.contents = StringTools.replace(controller.fileDetails.contents, "\r", "\r\n");
+			#else
+			details.contents = StringTools.replace(controller.fileDetails.contents, "\n", "\r\n");
+			#end
+			
+			#if flash
+				#if air
+					FileSystemHelper.writeFile(details.filePath, details.contents);
+					controller.dirty = false;
+				#else
+					saveDocumentAs(index);
+				#end
+			#else
+				FileSystemHelper.writeFile(details.filePath, details.contents);
+				controller.dirty = false;
+			#end
+		}
+	}
+	
 	public static function saveDocumentAs(index:Int):Void {
 		var controller:DocumentController = _documentControllers[index];
 
@@ -96,11 +125,16 @@ class DocumentManager {
 		FileDialogs.saveFileAs({}, details, function(details:FileDetails) {
 			PrefsManager.lastDir = StringTools.replace(details.filePath, details.name, "");
 			documentTabs.setTabText(index, details.name);
+			controller.dirty = false;
 		});
 	}
 	
 	public static function saveActiveDocumentAs():Void {
 		saveDocumentAs(documentTabs.selectedIndex);
+	}
+
+	public static function saveActiveDocument():Void {
+		saveDocument(documentTabs.selectedIndex);
 	}
 	
 	public static function listDocuments():Array<Dynamic> {
@@ -116,4 +150,8 @@ class DocumentManager {
 		return array;
 	}
 	
+	public static function findTabFromDocument(doc:DocumentController):Button {
+		var index:Int = Lambda.indexOf(_documentControllers, doc);
+		return documentTabs.getTabButton(index);
+	}
 }

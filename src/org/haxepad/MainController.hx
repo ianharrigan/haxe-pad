@@ -37,6 +37,7 @@ class MainController extends XMLController {
 				case "menu-file-open":
 					DocumentManager.openDocument();
 				case "menu-file-save":
+					DocumentManager.saveActiveDocument();
 				case "menu-file-save-as":
 					DocumentManager.saveActiveDocumentAs();
 				default:
@@ -78,7 +79,7 @@ class MainController extends XMLController {
 		});
 
 		attachEvent("toolbar-save", UIEvent.CLICK, function(e) {
-			DocumentManager.saveActiveDocumentAs();
+			DocumentManager.saveActiveDocument();
 		});
 		
 		attachEvent("toolbar-find", UIEvent.CLICK, function(e) {
@@ -120,10 +121,14 @@ class MainController extends XMLController {
 	private function prefsPopup():Void {
 		var controller:PrefsController = new PrefsController();
 		var config:Dynamic = { };
-		config.buttons = [PopupButton.OK, PopupButton.CANCEL];
+		config.buttons = [PopupButton.CONFIRM, PopupButton.CANCEL];
 		config.styleName = "prefs-popup";
-		config.width = 400;
-		showCustomPopup(controller.view, "Settings", config);
+		config.width = 600;
+		showCustomPopup(controller.view, "Settings", config, function(e) {
+			if (e == PopupButton.CONFIRM) {
+				controller.savePrefs();
+			}
+		});
 	}
 	
 	private function onTabGlyphClick(event:UIEvent):Void {

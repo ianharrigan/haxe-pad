@@ -7,9 +7,15 @@
 		<exclude>flash</exclude>
 	</platforms>
 	<verb name="compile">
-		System.exec("haxe -cp %FILEDIR% -main Main -swf %FILEDIR%/%FILENAME_NOEXT%.swf");
+		Documents.saveActiveDocument();
+		System.exec("haxe -cp %FILEDIR% -main Main -cpp %FILEDIR%/bin/cpp");
+		//System.exec("haxe -cp %FILEDIR% -main Main -swf %FILEDIR%/%FILENAME_NOEXT%.swf");
 	</verb>
 	<verb name="run">
-		System.exec("%PREF_FLASH_PLAYER% %FILEDIR%/%FILENAME_NOEXT%.swf");
+		Documents.saveActiveDocument();
+		var retVal = System.exec("haxe -cp %FILEDIR% -main Main -swf %FILEDIR%/%FILENAME_NOEXT%.swf");
+		if (retVal == 0) {
+			System.exec("%FLASH_PLAYER% %FILEDIR%/%FILENAME_NOEXT%.swf");
+		}
 	</verb>
 </plugin>

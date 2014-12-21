@@ -3,10 +3,8 @@
 		<style>
 			#document-tabs #tabButton {
 				icon: "img/cross-small.png";
-				iconPosition: "farRight";
-				spacingX: 5;
-				paddingRight: 0;
-				paddingLeft: 0;
+				iconPosition: "right";
+				spacing: 0;
 			}
 		</style>
 		<menubar style="autoSize:true">
@@ -25,7 +23,7 @@
 						<import resource="ui/menus/help.xml" />
 					</menubutton>
 				</hbox>
-				
+
 				<import resource="ui/toolbar.xml" />
 			</vbox>
 		</menubar>

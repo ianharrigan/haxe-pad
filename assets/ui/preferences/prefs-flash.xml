@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<grid columns="2" text="Flash Settings">
+	<text text="Flash Player:" />
+	<textinput text="" width="100%" id="flashPlayer"/>
+</grid>

@@ -3,11 +3,13 @@ package org.haxepad;
 import flash.events.Event;
 import flash.events.KeyboardEvent;
 import haxe.ui.dialogs.files.FileDetails;
+import haxe.ui.richtext.Code;
 import haxe.ui.toolkit.containers.HBox;
 import haxe.ui.toolkit.containers.VBox;
-import haxe.ui.toolkit.controls.extended.Code;
+import haxe.ui.toolkit.controls.Button;
 import haxe.ui.toolkit.core.Component;
 import haxe.ui.toolkit.core.XMLController;
+import org.haxepad.managers.DocumentManager;
 import org.haxepad.managers.PluginManager;
 import org.haxepad.plugins.IPlugin;
 import org.haxepad.plugins.IUserInterfacePlugin;
@@ -30,12 +32,12 @@ class DocumentController extends XMLController {
 		_editor.addEventListener(Event.ADDED_TO_STAGE, function(e) {
 			_editor.focus();
 		});
+		_editor.addEventListener(KeyboardEvent.KEY_UP, onKeyDown);
 
 		loadPlugins();
 	}
 	
 	public var fileDetails(get, set):FileDetails;
-	
 	private function get_fileDetails():FileDetails {
 		_fileDetails.contents = _editor.text;
 		return _fileDetails;
@@ -44,6 +46,32 @@ class DocumentController extends XMLController {
 	private function set_fileDetails(value:FileDetails):FileDetails {
 		_fileDetails = value;
 		_editor.text = _fileDetails.contents;
+		return value;
+	}
+	
+	private function onKeyDown(event:KeyboardEvent):Void {
+		if (event.keyCode == 15 || event.keyCode == 16|| event.keyCode == 17 || event.keyCode == 18 || event.keyCode == 36 || event.keyCode == 35 || event.keyCode == 9) {
+			return;
+		}
+		//trace(event);
+		dirty = true;
+	}
+	
+	private var _dirty:Bool = false;
+	public var dirty(get, set):Bool;
+	private function get_dirty():Bool {
+		return _dirty;
+	}
+	private function set_dirty(value:Bool):Bool {
+		_dirty = value;
+		var tab:Button = DocumentManager.findTabFromDocument(this);
+		if (tab != null) {
+			if (_dirty == true) {
+				tab.text = _fileDetails.name + "*";
+			} else {
+				tab.text = _fileDetails.name;
+			}
+		}
 		return value;
 	}
 	

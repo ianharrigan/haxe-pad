@@ -16,6 +16,10 @@ class DocumentManagerWrapper {
 	public function setActiveIndex(value:Int):Void {
 		DocumentManager.activeDocumentIndex = value;
 	}
+
+	public function saveActiveDocument():Void {
+		DocumentManager.saveActiveDocument();
+	}
 	
 	public function getDocumentCount():Int {
 		return DocumentManager.documentCount;

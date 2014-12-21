@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <vbox width="100%" height="400">
-	<accordion id="prefs-accordion" width="100%" height="100%">
-		<sys:import resource="ui/preferences/prefs-defaults.xml" />
+	<accordion id="prefs" width="100%" height="100%">
+		<import resource="ui/preferences/prefs-defaults.xml" />
+		<import resource="ui/preferences/prefs-flash.xml" />
 		<!--sys:import resource="ui/preferences/prefs-test.xml" /-->
 	</accordion>
 </vbox>
